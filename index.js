@@ -172,7 +172,7 @@ window.onload = ()=> {
         document.body.appendChild(canvas);
         drawLines();
         canvas.onclick = (e)=> {
-            const widthResp = parseInt(width+(size+5) - window.screen.width/2);
+            const widthResp = parseInt(width+(size-15) - window.screen.width/2);
             const cursorX = parseInt((e.clientX-widthResp)/size);
             const cursorY = parseInt(e.clientY/size);
             drawPoint(cursorY, cursorX);
