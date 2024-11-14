@@ -30,7 +30,8 @@ window.onload = ()=> {
             color++;
         }
     }
-    const Matrice = ()=> {
+    
+    const Matrix = ()=> {
         const lenX = parseInt(width/size);
         const lenY = parseInt(height/size);
         for (let i = 0; i <= lenY+10; i++) {
@@ -40,6 +41,7 @@ window.onload = ()=> {
             }
         }
     }
+    
     const Lines = ()=> {
         const lenX = parseInt(width/size);
         const lenY = parseInt(height/size);
@@ -112,6 +114,7 @@ window.onload = ()=> {
             }
         }
     }
+
     const rounds = ()=> {  
         const Jouer = document.getElementById('Jouer');
         Jouer.style.color = color%2===0? "red" : "blue";
@@ -119,7 +122,7 @@ window.onload = ()=> {
         Jouer.textContent = rd;
     }
     const init = ()=> {
-        Matrice();
+        Matrix();
         const canvas = document.createElement('canvas');
         const div = document.createElement('div');
         document.body.appendChild(div);
@@ -169,7 +172,7 @@ window.onload = ()=> {
         document.body.appendChild(canvas);
         drawLines();
         canvas.onclick = (e)=> {
-            const widthResp = parseInt((window.screen.width-width)/2-(window.screen.width/size-70));
+            const widthResp = parseInt(width+(size+5) - window.screen.width/2);
             const cursorX = parseInt((e.clientX-widthResp)/size);
             const cursorY = parseInt(e.clientY/size);
             drawPoint(cursorY, cursorX);

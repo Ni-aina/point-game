@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu de Jeu</title>
+    <style>
+        /* Style général */
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #e8f0fe; /* Bleu clair pour un fond apaisant */
+        }
+        .menu-container {
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #3a5a9e; /* Bleu foncé pour un titre captivant */
+            margin-bottom: 10px;
+        }
+        p {
+            color: #4b6da6;
+            font-size: 1.1em;
+            margin-top: 5px;
+        }
+        .game-choice {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            gap: 15px;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(58, 90, 158, 0.2);
+            padding: 20px;
+            width: 45%;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(58, 90, 158, 0.3);
+        }
+        .card h2 {
+            color: #3a5a9e;
+            font-size: 1.5em;
+            margin-bottom: 8px;
+        }
+        .card p {
+            color: #6b8ac6;
+            font-size: 1em;
+        }
+        .mode-choice {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        button {
+            padding: 15px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .ia-button {
+            width: 400px;
+            background-color: #ff7043; /* Orange pour attirer l’attention */
+            color: white;
+        }
+        .player-button {
+            width: 400px;
+            background-color: #66bb6a; /* Vert pour inviter à l’action */
+            color: white;
+        }
+        button:hover {
+            opacity: 0.85;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <h1>Bienvenue dans le Jeu</h1>
+        <p>Choisissez votre jeu préféré</p>
+        
+        <!-- Choix du jeu -->
+        <div class="game-choice">
+            <div class="card" onclick="selectGame('points')">
+                <h2>Jeu de Points</h2>
+                <p>Le but c'est d'avoir une ligne par 5 points successives</p>
+            </div>
+            <div class="card" onclick="selectGame('fanorona')">
+                <h2>Jeu de Faritany</h2>
+                <p>Le but c'est d'entourer les points adverses</p>
+            </div>
+        </div>
+
+        <!-- Choix du mode -->
+        <div id="mode-choice1" class="mode-choice">
+            <p>Choisissez votre mode de jeu pour <span id="game-name"></span> :</p>
+            <a href="indexIA.html">
+                <button class="ia-button" onclick="startGame('IA')">Contre IA</button>
+            </a>
+            <a href="index.html">
+                <button class="player-button" onclick="startGame('player')">Contre un autre joueur</button>
+            </a>
+        </div>
+
+        <!-- Choix du mode -->
+        <div id="mode-choice2" class="mode-choice">
+            <p>Choisissez votre mode de jeu pour <span id="game-name"></span> :</p>
+            <a href="indexIA.html">
+                <button class="ia-button" onclick="startGame('IA')">Contre IA</button>
+            </a>
+            <a href="indexFi.html">
+                <button class="player-button" onclick="startGame('player')">Contre un autre joueur</button>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Fonction pour sélectionner le jeu
+        function selectGame(game) {
+            // Affiche le nom du jeu sélectionné
+            document.getElementById('game-name').textContent = game === 'points' ? 'Jeu de Points' : 'Jeu de Fanorona';
+            // Cache le choix du jeu et affiche le choix du mode
+            document.querySelector('.game-choice').style.display = 'none';
+            if (game === "points")
+              return document.getElementById('mode-choice1').style.display = 'flex';
+            document.getElementById('mode-choice2').style.display = 'flex';
+        }
+    </script>
+</body>
+</html>
